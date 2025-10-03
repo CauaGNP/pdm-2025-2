@@ -54,7 +54,7 @@ export default function TelaTarefas() {
     console.log("toggle executado", tarefa);
     updateMutation.mutate({
       ...tarefa,
-      concluida: !tarefa.concluida,
+      concluida: !tarefa.finish,
     });
   }
 

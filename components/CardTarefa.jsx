@@ -13,12 +13,12 @@ export function CardTarefa({ tarefa, onToggle, onPress }) {
   return (
     <View style={styles.card}>
       <View style={styles.descricaoContainer}>
-        <Text>{tarefa.descricao}</Text>
+        <Text>{tarefa.description}</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={tarefa.concluida ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={tarefa.finish ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
-          value={tarefa.concluida}
+          value={tarefa.finish}
           onValueChange={() => onToggle(tarefa)}
         />
       </View>

@@ -5,38 +5,32 @@ const headerJson = {
 };
 
 const instance = axios.create({
-  baseURL: "https://parseapi.back4app.com",
-  timeout: 1000,
-  headers: {
-    "X-Parse-Application-Id": "lzQ61WWmjSxYma4dOZSVhO5Ofo9HQ0WaXT1bTRyY",
-    "X-Parse-JavaScript-Key": "VzOBLroXdlFsuyozWeDEVGHSB4PGNJkpTbXUeSWk",
-  },
+  baseURL: "https://aos-2025-2-plum.vercel.app",
+  timeout: 1000
 });
 
 export async function getTarefas() {
-  const { data } = await instance.get("/classes/Tarefa");
-  return data?.results;
+  const { data } = await instance.get("/task");
+  return data?.data;
 }
 
 export async function updateTarefa(tarefa) {
   const { data } = await instance.put(
-    `/classes/Tarefa/${tarefa.objectId}`,
-    { descricao: tarefa.descricao, concluida: tarefa.concluida },
-    { headers: headerJson }
+    `/task/${tarefa.id}`,
+    { description: tarefa.descricao, finish: tarefa.concluida },
   );
   return data;
 }
 
 export async function addTarefa({ descricao }) {
   const { data } = await instance.post(
-    `/classes/Tarefa`,
-    { descricao },
-    { headers: headerJson }
+    `/task`,
+    { description : descricao },
   );
   return data;
 }
 
 export async function deleteTarefa(tarefa) {
-  const { data } = await instance.delete(`/classes/Tarefa/${tarefa.objectId}`);
+  const { data } = await instance.delete(`/task/${tarefa.id}`);
   return data;
 }
