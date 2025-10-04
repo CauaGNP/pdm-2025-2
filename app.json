@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.marciobueno1.pdm20252"
+      "bundleIdentifier": "com.cauagnp.pdm20252"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.marciobueno1.pdm20252"
+      "package": "com.cauagnp.pdm20252"
     },
     "web": {
       "bundler": "metro",
@@ -43,16 +43,17 @@
       "typedRoutes": true
     },
     "extra": {
+      "router": {},
       "eas": {
-        "projectId": "35aae221-2f3c-4cba-a266-939001718d54"
+        "projectId": "88a7697c-cada-4f67-92f9-dacf5afed1e8"
       }
     },
-    "owner": "marciobueno1",
-    "updates": {
-      "url": "https://u.expo.dev/35aae221-2f3c-4cba-a266-939001718d54"
-    },
+    "owner": "cauagnp",
     "runtimeVersion": {
       "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/88a7697c-cada-4f67-92f9-dacf5afed1e8"
     }
   }
 }
