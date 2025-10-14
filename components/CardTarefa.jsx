@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, StyleSheet, Switch, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { IconButton, Switch, Text } from 'react-native-paper';
 
 export function CardTarefa({ tarefa, onToggle, onPress }) {
   const [disabled, setDisabled] = useState(false);
@@ -13,7 +14,7 @@ export function CardTarefa({ tarefa, onToggle, onPress }) {
   return (
     <View style={styles.card}>
       <View style={styles.descricaoContainer}>
-        <Text>{tarefa.description}</Text>
+        <Text variant="titleMedium">{tarefa.description}</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={tarefa.finish ? "#f5dd4b" : "#f4f3f4"}
@@ -24,18 +25,14 @@ export function CardTarefa({ tarefa, onToggle, onPress }) {
       </View>
       <View style={styles.descricaoContainer}>
         <View style={{ flex: 1 }} />
-        <Button
-          disabled={disabled}
-          color="indianred"
-          onPress={handlePress}
-          title="X"
-        />
+        <IconButton icon="delete" buttonColor="indianred" onPress={handlePress} disabled={disabled} />
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+
   card: {
     width: "100%",
     backgroundColor: "white",

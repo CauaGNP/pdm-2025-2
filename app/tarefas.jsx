@@ -3,13 +3,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import {
   Alert,
-  Button,
   FlatList,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from "react-native";
+import { ActivityIndicator, Button, MD2Colors, TextInput, List  } from "react-native-paper";
 import { CardTarefa } from "../components/CardTarefa";
 
 export default function TelaTarefas() {
@@ -66,12 +65,14 @@ export default function TelaTarefas() {
     <View style={styles.container}>
       <View style={styles.inputView}>
         <TextInput
-          style={styles}
-          placeholder="Descrição"
+          mode="outlined"
+          outlineStyle={{borderWidth : 0.5}}
+          style={styles.input}
+          label="Descrição"
           value={descricao}
           onChangeText={setDescricao}
         />
-        <Button title="ADD" onPress={handleAdd} />
+        <Button onPress={handleAdd} style={styles.button}>Add</Button>
       </View>
       <FlatList
         style={{ flex: 1, width: "100%" }}
@@ -88,9 +89,8 @@ export default function TelaTarefas() {
       />
       {(isPending || error || isFetching) && (
         <View style={styles.statusbar}>
-          {isPending && <Text>Carregando...</Text>}
+          {isPending || isFetching && <ActivityIndicator animating={true} color={MD2Colors.purple400} size="large"/>}
           {error && <Text>Erro: {error.message}</Text>}
-          {isFetching && <Text>Atualizando...</Text>}
         </View>
       )}
     </View>
@@ -106,29 +106,31 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   statusbar: {
-    backgroundColor: "yellow",
-    width: "100%",
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
+    position : "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
   },
   list: {
     width: "100%",
     alignItems: "center",
   },
   input: {
-    width: "100%",
+    width: "80%",
     padding: 5,
   },
+  button: {
+    width: 50,  
+    height: 50, 
+    justifyContent: "center", 
+    alignItems: "center",
+  },
   inputView: {
-    width: "95%",
+    width: "90%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     padding: 5,
-    borderColor: "black",
-    borderWidth: 1,
-    borderStyle: "solid",
     borderRadius: 5,
     marginBottom: 10,
     marginTop: 10,
